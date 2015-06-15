@@ -14,6 +14,14 @@ For every change to a source translation file in Github, the server will update 
 How run it
 ===
 
+## Via Docker
+```
+docker build -t txgh .
+docker run --restart=always -dtip 8000:8000 -v `pwd`/log:/log txgh
+```
+
+## Via Docker
+
 In order to run the server, you need to have Ruby and bundler installed:
 
 ```BASH
