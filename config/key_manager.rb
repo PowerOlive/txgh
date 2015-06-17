@@ -5,8 +5,6 @@ module Strava
     class KeyManager
 
       def self.github_repo_config(name)
-        puts name
-        puts yaml.inspect
         yaml['txgh']['github']['repos'][name]
       end
 
@@ -16,7 +14,6 @@ module Strava
 
       def self.yaml
         path = File.join(File.dirname(File.expand_path(__FILE__)), "txgh.yml")
-        puts path
         YAML::load_file(path)
       end
 
