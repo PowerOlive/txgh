@@ -4,10 +4,14 @@ RUN apt-get update
 RUN apt-get install -y build-essential curl git libssl-dev
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s stable
-RUN /bin/bash -l -c "source /etc/profile.d/rvm.sh && rvm install 1.9.3 && gem install bundler --no-rdoc --no-ri"
+ENV PATH /usr/local/rvm/gems/ruby-1.9.3-p551/wrappers:/usr/local/rvm/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+RUN rvm requirements
+RUN rvm install ruby-1.9.3
+RUN gem install bundler --no-rdoc --no-ri
+
 RUN mkdir /txgh
 COPY Gemfile* /txgh/
-RUN /bin/bash -l -c "cd txgh; bundle install; cd -"
+RUN cd txgh; bundle install; cd -
 COPY . /txgh
 ENV RACK_ENV production
 
