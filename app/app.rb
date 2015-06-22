@@ -51,7 +51,7 @@ module L10n
         unless request['language'] == tx_resource.source_lang
           translation = transifex_project.api.download(tx_resource, request['language'])
           translation_path = tx_resource.translation_path(transifex_project.lang_map(request['language']))
-          repo_name = tx_resource["repo"] || transifex_project.github_repo.name
+          repo_name = tx_resource.repo || transifex_project.github_repo.name
           transifex_project.github_repo.api.commit(
               repo_name, translation_path, translation)
         end

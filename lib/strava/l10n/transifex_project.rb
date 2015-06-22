@@ -21,7 +21,7 @@ module Strava
         @tx_config.resources.each do |resource|
           puts resource.inspect
           if resource.resource_slug == slug then
-            resource["repo"] = @config[slug] if @config.include?(slug)
+            resource.repo = @config[slug] if @config.include?(slug)
             return resource
           end
         end
