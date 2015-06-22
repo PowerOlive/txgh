@@ -49,6 +49,7 @@ module L10n
 
         if !tx_resource then
           $stderr.puts "Resource " + request['resource'] + " not found!"
+          return
         end
 
         # Do not update the source
