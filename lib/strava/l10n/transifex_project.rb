@@ -25,6 +25,7 @@ module Strava
             return resource
           end
         end
+        return nil
       end
 
       def resources
