@@ -31,6 +31,14 @@ module Strava
         @source_file
       end
 
+      def repo= r
+        @repo = r
+      end
+
+      def repo
+        @repo
+      end
+
       def translation_path(language)
         path = String.new(@translation_file)
         path['<lang>'] = language
