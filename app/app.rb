@@ -47,6 +47,10 @@ module L10n
         transifex_project = Strava::L10n::TransifexProject.new(request['project'])
         tx_resource = transifex_project.resource(request['resource'])
 
+        if !tx_resource then
+          $stderr.puts "Resource " + request['resource'] + " not found!"
+        end
+
         # Do not update the source
         unless request['language'] == tx_resource.source_lang
           translation = transifex_project.api.download(tx_resource, request['language'])
